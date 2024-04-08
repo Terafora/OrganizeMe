@@ -22,15 +22,17 @@
          * @param string $title
          * @param string $content
          * @param string $due_date
+         * @param string $priority_lvl
          * @param int $id
          * @return boolean
          */
-        public function insert ($title, $content, $due_date, $id) {
+        public function insert ($title, $content, $due_date, $priority_lvl, $id) {
             try {
-                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date, id) VALUES (:title, :content, :due_date, :id)");
+                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date, priority_lvl, id) VALUES (:title, :content, :due_date, :priority_lvl, :id)");
                 $stmt->bindparam(":title", $title);
                 $stmt->bindparam(":content", $content);
                 $stmt->bindparam(":due_date", $due_date);
+                $stmt->bindparam(":priority_lvl", $priority_lvl);
                 $stmt->bindparam(":id", $id);
                 $stmt->execute();
                 return true;
@@ -46,15 +48,17 @@
          * @param string $title
          * @param string $content
          * @param string $due_date
+         * @param string $priority_lvl
          * @param int $id
          * @return boolean
          */
-        public function update ($title, $content, $due_date, $id) {
+        public function update ($title, $content, $due_date, $priority_lvl, $id) {
             try {
-                $stmt = $this->conn->prepare("UPDATE notes SET title = :title, content = :content, due_date = :due_date WHERE id = :id");
+                $stmt = $this->conn->prepare("UPDATE notes SET title = :title, content = :content, due_date = :due_date, priority_lvl = :priority_lvl WHERE id = :id");
                 $stmt->bindparam(":title", $title);
                 $stmt->bindparam(":content", $content);
                 $stmt->bindparam(":due_date", $due_date);
+                $stmt->bindparam(":priority_lvl", $priority_lvl);
                 $stmt->bindparam(":id", $id);
                 $stmt->execute();
                 return true;
