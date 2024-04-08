@@ -75,6 +75,13 @@
                 <label for="due_date">Due Date</label>
                 <input type="date" name="due_date" id="due_date" value="" placeholder="DD/MM/YYYY" required>
                 <br>
+                <label for="priority_lvl">Priority Level</label>
+                <select type="text" name="priority_lvl" id="priority_lvl" value="" required>
+                    <option value="high-priority">High</option>
+                    <option value="medium-priority">Medium</option>
+                    <option value="low-priority">Low</option>
+                </select>
+                <br>
                 <label for="id">ID</label>
                 <input type="number" name="id" id="id" readonly>
                 <br>
