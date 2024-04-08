@@ -1,3 +1,15 @@
-.red {
+.red-ast {
     color: red;
+}
+
+.high-priority {
+    background-color: tomato;
+}
+
+.medium-priority {
+    background-color: yellow;
+}
+
+.low-priority {
+    background-color: lightgreen;
 }
