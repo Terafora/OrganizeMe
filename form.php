@@ -4,21 +4,35 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-
-
+    
+    require_once './classes/note.php';
+    $objNote = new Note();
 
 
 
 //POST code
-if(isset($_POST['title']) && isset($_POST['content']) && isset($_POST['due_date'])) {
+if (isset($_POST['btn_save'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $due_date = $_POST['due_date'];
     $id = $_POST['id'];
 
-    $note = new Note();
-    $note->insert($title, $content, $due_date, $id);
-}
+    try {
+        if($id != null){
+            if($objNote->update($title, $content, $due_date, $id)){
+                $objNote->redirect('index.php?updated');
+            }
+        } else {
+            if($objNote->insert($title, $content, $due_date)){
+                $objNote->redirect('index.php?inserted');
+            } else{
+                $objNote->redirect('index.php?error');
+            }
+        }
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+    }
+
 
 ?>
 
@@ -43,7 +57,7 @@ if(isset($_POST['title']) && isset($_POST['content']) && isset($_POST['due_date'
 
             // form section
             <h2>Fields with an <span class="red">*</span> are required</h2>
-            <form method="post">
+            <form method="POST">
                 <label for="title">Note Title</label>
                 <input type="text" name="title" id="title" value="" placeholder="Note Title" maxlength="100" required>
                 <br>
