@@ -82,5 +82,14 @@
             }
         }
 
+
+        /**
+         * The function is for redirecting to a page by taking a location as a parameter.
+         * @param string $location
+         */
+        public function redirect ($location) {
+            header('Location: ' . $location);
+        }
+
     }
 ?>
