@@ -1,6 +1,27 @@
 <?php
 
+    // for showing erros
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+
+
+
+
+//POST code
+if(isset($_POST['title']) && isset($_POST['content']) && isset($_POST['due_date'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $due_date = $_POST['due_date'];
+    $id = $_POST['id'];
+
+    $note = new Note();
+    $note->insert($title, $content, $due_date, $id);
+}
+
 ?>
+
 
 <!DOCTYPE html>
     <html>
@@ -16,6 +37,11 @@
     </head>
     <body>
         <main>
+
+            // navbar will go here.
+ 
+
+            // form section
             <h2>Fields with an <span class="red">*</span> are required</h2>
             <form method="post">
                 <label for="title">Note Title</label>
@@ -33,5 +59,7 @@
                 <input type="submit" value="Submit">
             </form>
         </main>
+
+        // Footer will go here
     </body>
     </html>
