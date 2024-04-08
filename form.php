@@ -53,16 +53,17 @@
     <html>
     <head>
         <title>Note Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Form for making a note with OrganizeMe" />
+        <link qrel="stylesheet" type="text/css" href="./css/styles.css">
         <?php
             require_once './classes/note.php';
         ?>
     </head>
     <body>
+        <?php include "./includes/navbar.php" ?> 
         <main>
-
-            // navbar will go here.
- 
-
             // form section
             <h2>Fields with an <span class="red">*</span> are required</h2>
             <form method="POST">
@@ -88,7 +89,6 @@
                 <input type="submit" value="Submit">
             </form>
         </main>
-
-        // Footer will go here
+        <?php include "./includes/footer.php" ?>
     </body>
     </html>
