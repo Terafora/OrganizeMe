@@ -16,19 +16,22 @@
             return $stmt;
         }
 
+
         /**
-         * The function is for inserting a new note by taking a title, content and due_date as parameters.
+         * The function is for inserting a new note by taking a title, content, due_date and id as parameters.
          * @param string $title
          * @param string $content
          * @param string $due_date
+         * @param int $id
          * @return boolean
          */
-        public function insert ($title, $content, $due_date) {
+        public function insert ($title, $content, $due_date, $id) {
             try {
-                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date) VALUES (:title, :content, :due_date)");
+                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date, id) VALUES (:title, :content, :due_date, :id)");
                 $stmt->bindparam(":title", $title);
                 $stmt->bindparam(":content", $content);
                 $stmt->bindparam(":due_date", $due_date);
+                $stmt->bindparam(":id", $id);
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
@@ -37,6 +40,29 @@
             }
         }
 
+
+        /**
+         * The function is for updating a note by taking a title, content, due_date and id as parameters.
+         * @param string $title
+         * @param string $content
+         * @param string $due_date
+         * @param int $id
+         * @return boolean
+         */
+        public function update ($title, $content, $due_date, $id) {
+            try {
+                $stmt = $this->conn->prepare("UPDATE notes SET title = :title, content = :content, due_date = :due_date WHERE id = :id");
+                $stmt->bindparam(":title", $title);
+                $stmt->bindparam(":content", $content);
+                $stmt->bindparam(":due_date", $due_date);
+                $stmt->bindparam(":id", $id);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
     }
 
 ?>
