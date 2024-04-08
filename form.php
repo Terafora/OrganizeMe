@@ -26,15 +26,16 @@
         $title = $_POST['title'];
         $content = $_POST['content'];
         $due_date = $_POST['due_date'];
+        $priority_lvl = $_POST['priority_lvl'];
         $id = $_POST['id'];
 
         try {
             if($id != null){
-                if($objNote->update($title, $content, $due_date, $id)){
+                if($objNote->update($title, $content, $due_date, $priority_lvl, $id)){
                     $objNote->redirect('index.php?updated');
                 }
             } else {
-                if($objNote->insert($title, $content, $due_date, $id)){
+                if($objNote->insert($title, $content, $due_date, $priority_lvl, $id)){
                     $objNote->redirect('index.php?inserted');
                 } else{
                     $objNote->redirect('index.php?error');
@@ -51,14 +52,10 @@
 <!DOCTYPE html>
     <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="description" content="Form for making a note with OrganizeMe" />
         <title>Note Form</title>
         <?php
             require_once './classes/note.php';
         ?>
-        <link qrel="stylesheet" type="text/css" href="./css/styles.css">
     </head>
     <body>
         <main>
