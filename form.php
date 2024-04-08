@@ -8,31 +8,42 @@
     require_once './classes/note.php';
     $objNote = new Note();
 
+    //GET code
+
+    if(isset($_GET['edit_id'])){
+        $id = $_GET['edit_id'];
+        $stmt = $objNote->runQuery("SELECT * FROM notes WHERE id=:id");
+        $stmt->execute(array(":id"=>$id));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    } else {
+        $id = null;
+        $row = null;
+    }
 
 
 //POST code
-if (isset($_POST['btn_save'])) {
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $due_date = $_POST['due_date'];
-    $id = $_POST['id'];
+    if (isset($_POST['btn_save'])) {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $due_date = $_POST['due_date'];
+        $id = $_POST['id'];
 
-    try {
-        if($id != null){
-            if($objNote->update($title, $content, $due_date, $id)){
-                $objNote->redirect('index.php?updated');
+        try {
+            if($id != null){
+                if($objNote->update($title, $content, $due_date, $id)){
+                    $objNote->redirect('index.php?updated');
+                }
+            } else {
+                if($objNote->insert($title, $content, $due_date, $id)){
+                    $objNote->redirect('index.php?inserted');
+                } else{
+                    $objNote->redirect('index.php?error');
+                }
             }
-        } else {
-            if($objNote->insert($title, $content, $due_date)){
-                $objNote->redirect('index.php?inserted');
-            } else{
-                $objNote->redirect('index.php?error');
-            }
+        } catch(PDOException $e) {
+            echo $e->getMessage();
         }
-    } catch(PDOException $e) {
-        echo $e->getMessage();
     }
-
 
 ?>
 
