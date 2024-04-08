@@ -37,7 +37,7 @@
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                error_log('Insert Error: ' . $e->getMessage());
                 return false;
             }
         }
@@ -63,7 +63,7 @@
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                error_log('Insert Error: ' . $e->getMessage());
                 return false;
             }
         }
@@ -81,7 +81,7 @@
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                error_log('Insert Error: ' . $e->getMessage());
                 return false;
             }
         }
