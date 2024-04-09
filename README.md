@@ -86,7 +86,7 @@ Due to the time limit I wasnn't able to implement the following:
 ## Credits
 
 - Icons were used from [FontAwesome](https://fontawesome.com/)
-- Background CSS was made with the help of[100L5](https://10015.io)
+- Background CSS was made with the help of [100L5](https://10015.io)
 - Error checking done via:
     - [Stack Overflow](https://stackoverflow.com/)
     - [Reddit](https://Reddit.com/)
