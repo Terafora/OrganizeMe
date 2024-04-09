@@ -26,6 +26,10 @@ The goal of this project was to put into practice what I've learned about PHP an
 
 - Users are also able to edit a note.
 
+![Screen Recording - Apr 9, 2024 (4)](https://github.com/Terafora/OrganizeMe/assets/144109245/d5825114-40ed-4ca7-9f51-d9127c364a15)
+
+- Users can even set the status of their todos.
+
 ### Form
 
 ![Screenshot 2024-04-09 180610](https://github.com/Terafora/OrganizeMe/assets/144109245/53bda497-4052-4be8-bc95-f3557b7ea69c)
@@ -37,7 +41,7 @@ The goal of this project was to put into practice what I've learned about PHP an
 
 - PHP 
 - CSS
-- Vanilla JavaScript
+- Vanilla JavaScript / AJAX
 - MySQL (with XAMMP)
 
 ## Design
@@ -57,13 +61,12 @@ Basic colours were used for each card to indicate priority quickly and efficient
     - Edit notes/todos.
 
     - Delete notes/todos.
+ 
+    - Set status of notes/todos.
 
 ### Still To Come
 
 Due to the time limit I wasnn't able to implement the following:
-
-- Todo status
-  - I wasn't able to quite get this working just yet, but I began creating the code to make it so a pending and complete status would show on each card. As user's can delete these it's not critical to the functionality but is a nice to have I'd like to continue working on.
 
 - Automatically Changing Priority Levels On Cards
     - This wasn't started however I would be interested in making it so cards would automatically change priority level so that users would have more of a heads up on task deadlines.
@@ -74,6 +77,11 @@ Due to the time limit I wasnn't able to implement the following:
     - Forms ran correctly.
     - Actions ran correctly (CRUD functionality)
     - Layouts displayed correctly on each page.
+ 
+## Bugs
+
+- On the display for status in the top right of each note/todo the icon doesn't reflect the toggle from completed (circle with a tick) to unfinished (empty circle), until reload.
+    - Potential solution may be to use radio buttons instead and manually style those.
 
 ## Credits
 
