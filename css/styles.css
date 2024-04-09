@@ -5,7 +5,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: cornsilk;
+    background-image: repeating-conic-gradient(#f6d2f7 0% 25%, #faf7e1 0% 50%);
+    background-position: 0 0, 46px 46px;
+    background-size: 92px 92px;
+    background-color: #faf7e1;
 }
 
 .red-ast {
