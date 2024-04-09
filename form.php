@@ -21,7 +21,7 @@
     }
 
 
-    //POST code
+//POST code
     if (isset($_POST['btn_save'])) {
         $title = $_POST['title'];
         $content = $_POST['content'];
@@ -31,12 +31,12 @@
 
         try {
             if($id != null){
-                if($objNote->update($title, $content, $due_date, $priority_lvl, $id)){
+                if($objNote->update($title, $content, $due_date, $priority_lvl, $id, $complete)){
                     $objNote->redirect('index.php?updated');
                     exit();
                 }
             } else {
-                if($objNote->insert($title, $content, $due_date, $priority_lvl, $id)){
+                if($objNote->insert($title, $content, $due_date, $priority_lvl, $id, $complete)){
                     header('Location: index.php?updated');
                     exit();
                 } else{
@@ -68,29 +68,44 @@
         <?php include "./includes/navbar.php" ?> 
         <main>
             <!-- form section -->
-            <h2>Fields with an <span class="red-ast">*</span> are required</h2>
-            <form method="POST">
-                <!-- Hidden field to store the note ID -->
-                <input type="hidden" name="id" value="<?php echo isset($row['id']) ? $row['id'] : ''; ?>">
-                <label for="title">Note Title</label>
-                <input type="text" name="title" id="title" value="<?php echo isset($row['title']) ? $row['title'] : ''; ?>" placeholder="Note Title" maxlength="100" required>
-                <br>
-                <label for="content">Content</label>
-                <input type="text" name="content" id="content" value="<?php echo isset($row['content']) ? $row['content'] : ''; ?>" placeholder="Type the contents of your note here." maxlength="350" required>
-                <br>
-                <label for="due_date">Due Date</label>
-                <input type="date" name="due_date" id="due_date" value="<?php echo isset($row['due_date']) ? $row['due_date'] : ''; ?>" placeholder="DD/MM/YYYY" required>
-                <br>
-                <label for="priority_lvl">Priority Level</label>
-                <select name="priority_lvl" id="priority_lvl" required>
-                    <option value="high-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'high-priority') ? 'selected' : ''; ?>>High</option>
-                    <option value="medium-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'medium-priority') ? 'selected' : ''; ?>>Medium</option>
-                    <option value="low-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'low-priority') ? 'selected' : ''; ?>>Low</option>
-                </select>
-                <br>
-                <input type="submit" name="btn_save" value="Submit">
-            </form>
+            <div class="form-page">
+                <h2>Form</h2>
+                <h3>Fields with an <span class="red-ast">*</span> are required</h3>
+                <form method="POST">
+                    <input type="hidden" name="id" value="<?php echo isset($row['id']) ? $row['id'] : ''; ?>">
+                    <div >
+                        <label for="title"><span class="red-ast">*</span> Note Title: </label>
+                        <br>
+                        <input type="text" name="title" id="title" value="<?php echo isset($row['title']) ? $row['title'] : ''; ?>" placeholder="Note Title" maxlength="100" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="content"><span class="red-ast">*</span> Content: </label>
+                        <br>
+                        <textarea name="content" id="content" placeholder="Type the contents of your note here." maxlength="350" required><?php echo isset($row['content']) ? $row['content'] : ''; ?></textarea>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="due_date"><span class="red-ast">*</span> Due Date: </label>
+                        <br>
+                        <input type="date" name="due_date" id="due_date" value="<?php echo isset($row['due_date']) ? $row['due_date'] : ''; ?>" placeholder="DD/MM/YYYY" required>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="priority_lvl"><span class="red-ast">*</span> Priority Level: </label>
+                        <br>
+                        <select name="priority_lvl" id="priority_lvl" required>
+                            <option value="high-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'high-priority') ? 'selected' : ''; ?>>High</option>
+                            <option value="medium-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'medium-priority') ? 'selected' : ''; ?>>Medium</option>
+                            <option value="low-priority" <?php echo (isset($row['priority_lvl']) && $row['priority_lvl'] == 'low-priority') ? 'selected' : ''; ?>>Low</option>
+                        </select>
+                    </div>
+                    <br>
+                    <input type="submit" name="btn_save" value="Submit" class="def-button create-button white-text">
+                </form>
+            </div>
         </main>
         <?php include "./includes/footer.php" ?>
+        <script src="https://kit.fontawesome.com/b30a727321.js" crossorigin="anonymous"></script>
     </body>
     </html>
