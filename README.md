@@ -9,12 +9,26 @@ The goal of this project was to put into practice what I've learned about PHP an
 
 ### Home
 
+![Screen Recording - Apr 9, 2024](https://github.com/Terafora/OrganizeMe/assets/144109245/8fa2cd3d-063e-4238-a014-477bafbff0c9)
+
 - This is where the main dashboard is and where your notes/todos live.
 - The notes are coloured by priority which is manually set upon creation and can be editted by the user.
+
+![Screen Recording - Apr 9, 2024 (2)](https://github.com/Terafora/OrganizeMe/assets/144109245/3f6005fd-22f7-4fde-ad76-0cde19a13e82)
+
 - From here users can also delete their notes/todos which they have completed of no longer need.
-- Users are also able to select a button to create a new button.
+
+![Screen Recording - Apr 9, 2024 (1)](https://github.com/Terafora/OrganizeMe/assets/144109245/48bd51b8-b573-4e29-b551-e52f4cf9de41)
+
+- Users are also able to select a button to create a new note.
+
+![Screen Recording - Apr 9, 2024 (3)](https://github.com/Terafora/OrganizeMe/assets/144109245/90abd886-51ee-413c-9b95-2ce55ad7a39e)
+
+- Users are also able to edit a note.
 
 ### Form
+
+![Screenshot 2024-04-09 180610](https://github.com/Terafora/OrganizeMe/assets/144109245/53bda497-4052-4be8-bc95-f3557b7ea69c)
 
 - This is where notes/todos can be created and edited by the user.
 - Each note/todo has required fields and is automatically set a unique ID and default status of incomplete.
@@ -24,7 +38,7 @@ The goal of this project was to put into practice what I've learned about PHP an
 - PHP 
 - CSS
 - Vanilla JavaScript
-- MySQL
+- MySQL (with XAMMP)
 
 ## Design
 
@@ -48,11 +62,11 @@ Basic colours were used for each card to indicate priority quickly and efficient
 
 Due to the time limit I wasnn't able to implement the following:
 
-    - Todo status
-        - I wasn't able to quite get this working just yet, but I began creating the code to make it so a pending and complete status would show on each card. As user's can delete these it's not critical to the functionality but is a nice to have I'd like to continue working on.
+- Todo status
+  - I wasn't able to quite get this working just yet, but I began creating the code to make it so a pending and complete status would show on each card. As user's can delete these it's not critical to the functionality but is a nice to have I'd like to continue working on.
 
-    - Automatically Changing Priority Levels On Cards
-        - This wasn't started however I would be interested in making it so cards would automatically change priority level so that users would have more of a heads up on task deadlines.
+- Automatically Changing Priority Levels On Cards
+    - This wasn't started however I would be interested in making it so cards would automatically change priority level so that users would have more of a heads up on task deadlines.
 
 ## Testing
 
@@ -63,7 +77,8 @@ Due to the time limit I wasnn't able to implement the following:
 
 ## Credits
 
-- Icons were used from [FontAwesome](www.https://fontawesome.com/)
+- Icons were used from [FontAwesome](https://fontawesome.com/)
+- Background CSS was made with the help of[100L5](https://10015.io)
 - Error checking done via:
     - [Stack Overflow](https://stackoverflow.com/)
     - [Reddit](https://Reddit.com/)
