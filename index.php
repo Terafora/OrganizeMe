@@ -34,20 +34,23 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             $stmt->execute();    
         ?>
 
-        <h2>Notes</h2>
-        <div>
+        <h2 class="todos-main-title">Todos</h2>
+        <div class="create-button-container">
+            <a href="./form.php"><button class="def-button create-button white-text">Create a new note</button></a>
+        </div>
+        <div class="todo-list">
             <?php if ($stmt -> rowCount() > 0) { ?>
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                     <?php
                         $priority_class = '';
                         switch ($row['priority_lvl']) {
-                            case 'high':
+                            case 'high-priority':
                                 $priority_class = 'high-priority';
                                 break;
-                            case 'medium':
+                            case 'medium-priority':
                                 $priority_class = 'medium-priority';
                                 break;
-                            case 'low':
+                            case 'low-priority':
                                 $priority_class = 'low-priority';
                                 break;
                             default:
@@ -55,22 +58,23 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 break;
                         }
                     ?>
-                    <div class="<?php echo $priority_class; ?>">
-                        <h2><?php print $row['title']; ?></h2>
+                    <div class="<?php echo $priority_class; ?> todo-card">
+                        <h3><?php print $row['title']; ?></h3>
                         <p><?php print $row['content']; ?></p>
-                        <p>Due Date: <?php print $row['due_date']; ?></p>
-                        <p>Priority Level: <?php print $row['priority_lvl']; ?></p>
-                        <!-- Change the parameter name from 'id' to 'edit_id' -->
-                        <button><a href="./form.php?edit_id=<?php print $row['id']; ?>">Edit</a></button>
-                        <button><a href="./index.php?id=<?php print $row['id']; ?>">Delete</a></button>
+                        <p><strong>Due Date: <?php print $row['due_date']; ?></strong></p>
+                        <p><strong>Priority Level: <?php print $row['priority_lvl'];?></strong></p>
+                        <a href="./form.php?edit_id=<?php print $row['id']; ?>"><button class="def-button edit-button">Edit</button></a>
+                        <a href="./index.php?id=<?php print $row['id']; ?>"><button class="def-button delete-button">Delete</button></a>
+                        <!--<p class="status" onclick="toggleStatus(<?php echo $row['id']; ?>)"><?php print $row['complete'] ? '<i class="fa-regular fa-circle-check" ></i>' : '<i class="fa-regular fa-circle"></i>'; ?></p> -->
                     </div>
                 <?php } ?>
             <?php } else { ?>
-                <h3>Create a new note below</h3>
+                <h3>Create a new note above.</h3>
             <?php } ?>
-            <button><a href="./form.php">Create a new note</a></button>
         </div>
     </main>
     <?php include "./includes/footer.php" ?>
+    <script src="https://kit.fontawesome.com/b30a727321.js" crossorigin="anonymous"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
