@@ -1,6 +1,6 @@
 <?php
 
-    // for showing erros
+    // for showing errors
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -21,7 +21,7 @@
     }
 
 
-//POST code
+    //POST code
     if (isset($_POST['btn_save'])) {
         $title = $_POST['title'];
         $content = $_POST['content'];
@@ -70,6 +70,8 @@
             <!-- form section -->
             <h2>Fields with an <span class="red-ast">*</span> are required</h2>
             <form method="POST">
+                <!-- Hidden field to store the note ID -->
+                <input type="hidden" name="id" value="<?php echo isset($row['id']) ? $row['id'] : ''; ?>">
                 <label for="title">Note Title</label>
                 <input type="text" name="title" id="title" value="<?php echo isset($row['title']) ? $row['title'] : ''; ?>" placeholder="Note Title" maxlength="100" required>
                 <br>

@@ -3,6 +3,17 @@ include "./classes/Note.php";
 
 $objNote = new Note();
 
+// Check if the delete button is clicked and if an ID is provided
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $note_id = $_GET['id'];
+    if ($objNote->delete($note_id)) {
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Failed to delete the note.";
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +60,9 @@ $objNote = new Note();
                         <p><?php print $row['content']; ?></p>
                         <p>Due Date: <?php print $row['due_date']; ?></p>
                         <p>Priority Level: <?php print $row['priority_lvl']; ?></p>
+                        <!-- Change the parameter name from 'id' to 'edit_id' -->
+                        <button><a href="./form.php?edit_id=<?php print $row['id']; ?>">Edit</a></button>
+                        <button><a href="./index.php?id=<?php print $row['id']; ?>">Delete</a></button>
                     </div>
                 <?php } ?>
             <?php } else { ?>
