@@ -24,16 +24,18 @@
          * @param string $due_date
          * @param string $priority_lvl
          * @param int $id
+         * @param boolean $complete
          * @return boolean
          */
-        public function insert ($title, $content, $due_date, $priority_lvl, $id) {
+        public function insert ($title, $content, $due_date, $priority_lvl, $id, $complete) {
             try {
-                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date, priority_lvl, id) VALUES (:title, :content, :due_date, :priority_lvl, :id)");
+                $stmt = $this->conn->prepare("INSERT INTO notes (title, content, due_date, priority_lvl, id, complete) VALUES (:title, :content, :due_date, :priority_lvl, :id, :complete)");
                 $stmt->bindparam(":title", $title);
                 $stmt->bindparam(":content", $content);
                 $stmt->bindparam(":due_date", $due_date);
                 $stmt->bindparam(":priority_lvl", $priority_lvl);
                 $stmt->bindparam(":id", $id);
+                $stmt->bindparam(":complete", $complete);
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
@@ -50,16 +52,18 @@
          * @param string $due_date
          * @param string $priority_lvl
          * @param int $id
+         * @param boolean $complete
          * @return boolean
          */
-        public function update ($title, $content, $due_date, $priority_lvl, $id) {
+        public function update ($title, $content, $due_date, $priority_lvl, $id, $complete) {
             try {
-                $stmt = $this->conn->prepare("UPDATE notes SET title = :title, content = :content, due_date = :due_date, priority_lvl = :priority_lvl WHERE id = :id");
+                $stmt = $this->conn->prepare("UPDATE notes SET title = :title, content = :content, due_date = :due_date, priority_lvl = :priority_lvl, complete = :complete WHERE id = :id");
                 $stmt->bindparam(":title", $title);
                 $stmt->bindparam(":content", $content);
                 $stmt->bindparam(":due_date", $due_date);
                 $stmt->bindparam(":priority_lvl", $priority_lvl);
                 $stmt->bindparam(":id", $id);
+                $stmt->bindparam(":complete", $complete);
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {
@@ -77,6 +81,18 @@
         public function delete ($id) {
             try{
                 $stmt = $this->conn->prepare("DELETE FROM notes WHERE id = :id");
+                $stmt->bindparam(":id", $id);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                error_log('Insert Error: ' . $e->getMessage());
+                return false;
+            }
+        }
+
+        public function status () {
+            try {
+                $stmt = $this->conn->prepare("UPDATE notes SET complete = 1 WHERE id = :id");
                 $stmt->bindparam(":id", $id);
                 $stmt->execute();
                 return true;
