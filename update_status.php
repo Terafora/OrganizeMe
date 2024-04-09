@@ -1,9 +1,3 @@
-/*
-Not able to get this working in a reasonable amount of time for submission,
-however this isn't critical to the functionality of the app.
-I'll return to this in my free time to figure it out.
-*/
-
 <?php
 require_once './classes/Note.php';
 
@@ -25,3 +19,4 @@ if (isset($_POST['id']) && !empty($_POST['id'])) {
     // ID not provided
     http_response_code(400);
 }
+?>

@@ -1,9 +1,3 @@
-/*
-Not able to get this working in a reasonable amount of time for submission,
-however this isn't critical to the functionality of the app.
-I'll return to this in my free time to figure it out.
-*/
-
 // Function to handle status toggle
 function toggleStatus(status) {
     var xhr = new XMLHttpRequest();
@@ -26,4 +20,3 @@ function toggleStatus(status) {
     };
     xhr.send("id=" + status);
 }
-

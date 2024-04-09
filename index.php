@@ -65,7 +65,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         <p><strong>Priority Level: <?php print $row['priority_lvl'];?></strong></p>
                         <a href="./form.php?edit_id=<?php print $row['id']; ?>"><button class="def-button edit-button">Edit</button></a>
                         <a href="./index.php?id=<?php print $row['id']; ?>"><button class="def-button delete-button">Delete</button></a>
-                        <!--<p class="status" onclick="toggleStatus(<?php echo $row['id']; ?>)"><?php print $row['complete'] ? '<i class="fa-regular fa-circle-check" ></i>' : '<i class="fa-regular fa-circle"></i>'; ?></p> -->
+                        <p class="status" onclick="toggleStatus(<?php echo $row['id']; ?>)" id="status_<?php echo $row['id']; ?>"><?php print $row['complete'] ? '<i class="fa-regular fa-circle-check" ></i>' : '<i class="fa-regular fa-circle"></i>'; ?></p>
                     </div>
                 <?php } ?>
             <?php } else { ?>

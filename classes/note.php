@@ -90,9 +90,9 @@
             }
         }
 
-        public function status($id) { // Add $id parameter
+        public function status($id) {
             try {
-                $stmt = $this->conn->prepare("UPDATE notes SET complete = 1 WHERE id = :id");
+                $stmt = $this->conn->prepare("UPDATE notes SET complete = NOT complete WHERE id = :id"); // Toggle the complete status
                 $stmt->bindparam(":id", $id);
                 $stmt->execute();
                 return true;
@@ -101,6 +101,7 @@
                 return false;
             }
         }
+        
         
 
 
