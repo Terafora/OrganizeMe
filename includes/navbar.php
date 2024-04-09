@@ -1,4 +1,3 @@
-
 <header>
-    <h1><a href="./index.php">OrganizeMe</a></h1>
+    <h1 class="header-title"><a href="./index.php" class="white-text">OrganizeMe</a></h1>
 </header>
