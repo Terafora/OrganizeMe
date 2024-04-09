@@ -22,33 +22,39 @@
 
 
 //POST code
-    if (isset($_POST['btn_save'])) {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $due_date = $_POST['due_date'];
-        $priority_lvl = $_POST['priority_lvl'];
-        $id = $_POST['id'];
+if (isset($_POST['btn_save'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $due_date = $_POST['due_date'];
+    $priority_lvl = $_POST['priority_lvl'];
+    $id = $_POST['id'];
 
-        try {
-            if($id != null){
-                if($objNote->update($title, $content, $due_date, $priority_lvl, $id, $complete)){
-                    $objNote->redirect('index.php?updated');
-                    exit();
+    // Add $complete variable
+    $complete = isset($_POST['complete']) ? $_POST['complete'] : 0; // Assuming default is 0
+
+    try {
+        if($id != null){
+            if($objNote->update($title, $content, $due_date, $priority_lvl, $id, $complete)){
+                // Update completion status
+                if ($complete == 1) {
+                    $objNote->status($id);
                 }
-            } else {
-                if($objNote->insert($title, $content, $due_date, $priority_lvl, $id, $complete)){
-                    header('Location: index.php?updated');
-                    exit();
-                } else{
-                    $objNote->redirect('index.php?error');
-                    exit();
-                }
+                $objNote->redirect('index.php?updated');
+                exit();
             }
-        } catch(PDOException $e) {
-            echo $e->getMessage();
+        } else {
+            if($objNote->insert($title, $content, $due_date, $priority_lvl, $id, $complete)){
+                header('Location: index.php?updated');
+                exit();
+            } else{
+                $objNote->redirect('index.php?error');
+                exit();
+            }
         }
+    } catch(PDOException $e) {
+        echo $e->getMessage();
     }
-
+}
 ?>
 
 
