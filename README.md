@@ -89,6 +89,7 @@ Due to the time limit I wasnn't able to implement the following:
 - Background CSS was made with the help of [100L5](https://10015.io)
 - Error checking done via:
     - [Stack Overflow](https://stackoverflow.com/)
+    - [freeCodeCamp](https://www.freecodecamp.org/news/how-to-get-started-with-php/)
     - [Reddit](https://Reddit.com/)
     - [Jet Brains](https://www.jetbrains.com)
     - [PHP official site](https://www.php.net)
